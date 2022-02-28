@@ -10,10 +10,10 @@ class PostsProvider {
     ApiRequest(url: 'https://jsonplaceholder.typicode.com/posts', data: null).get(
       beforeSend: () => { if (beforeSend != null) beforeSend() },
       onSuccess: (data){
-        onSuccess((data as List).map((postJson) => Post.fromJson(postJson)).toList());
         // var postsJson = data as List;
         // List<Post> posts = postsJson.map((postJson) => Post.fromJson(postJson)).toList();
         // onSuccess(posts);
+        onSuccess((data as List).map((postJson) => Post.fromJson(postJson)).toList());
     },
     onError: (error) => {if (onError != null) onError(error)});
   }

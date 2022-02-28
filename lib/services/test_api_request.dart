@@ -21,7 +21,7 @@ class TestApiRequest {
     Function(dynamic error) onError,
   }) {
     _dio().get(this.url, queryParameters: this.data).then((res) {
-      if (onSuccess != null) onSuccess(res.data);
+      if (onSuccess != null) onSuccess(res.data.results.hotel_list_cache_models);
     }).catchError((error) {
       if (onError != null) onError(error);
     });

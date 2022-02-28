@@ -6,7 +6,6 @@ import 'package:fetch_api_using_dio/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 void main() {
   runApp(MyApp());
 }

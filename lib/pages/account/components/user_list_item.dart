@@ -1,6 +1,8 @@
 import 'package:fetch_api_using_dio/models/users.dart';
 import 'package:fetch_api_using_dio/pages/account/account_controller.dart';
+import 'package:fetch_api_using_dio/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UserListItem extends StatelessWidget {
   final User user;
@@ -20,7 +22,9 @@ class UserListItem extends StatelessWidget {
       // ),
       child: ElevatedButton(
         onPressed: (){
-          print(user.name + ' ' + user.phone + ' ' + user.email);
+          // print(user.name + ' ' + user.phone + ' ' + user.email);
+          var userArguments = <String, String>{'name': user.name, 'email': user.email, 'phone': user.phone};
+          Get.toNamed(AppRoutes.USERPAGE + '/' + user.id.toString(), arguments: userArguments);
         },
         child: Text(user.name),),
     );

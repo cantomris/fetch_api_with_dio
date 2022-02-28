@@ -1,21 +1,20 @@
-import 'package:fetch_api_using_dio/models/post.dart';
+import 'package:fetch_api_using_dio/models/test_hotels.dart';
 import 'package:fetch_api_using_dio/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PostListItem extends StatelessWidget {
-  final Post post;
+class HotelListItem extends StatelessWidget {
+  final TestHotels hotel;
 
-  const PostListItem({Key key, this.post}) : super(key: key);
-
+  const HotelListItem({Key key, this.hotel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       padding: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 15),
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
+      BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
         BoxShadow(
             color: Colors.black.withAlpha(25),
             blurRadius: 1,
@@ -26,39 +25,39 @@ class PostListItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              ClipOval(
-                child: Image.network(
-                  'https://picsum.photos/50/50?random=${post.id}',
-                  height: 40,
-                  width: 40,
-                ),
-              ),
+              // ClipOval(
+              //   child: Image.network(
+              //     hotel.imageUrl,
+              //     height: 80,
+              //     width: 80,
+              //   ),
+              // ),
               const SizedBox(
                 width: 15,
               ),
               Expanded(
                   child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    post.title,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text('Two days ago', style: TextStyle(fontSize: 13)),
-                ],
-              )),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        hotel.name,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: TextStyle(fontSize: 17),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(hotel.childInfo, style: TextStyle(fontSize: 13)),
+                    ],
+                  )),
             ],
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(post.body),
+          Text(hotel.title),
           Row(
             children: [
               IconButton(
@@ -78,8 +77,8 @@ class PostListItem extends StatelessWidget {
                       color: Colors.blueAccent)),
               IconButton(
                   onPressed: () {
-                    Get.toNamed(AppRoutes.POSTDETAIL + '/' + post.id.toString(),
-                        arguments: {'id': post.id, 'title': post.title, 'body': post.body});
+                    Get.toNamed(AppRoutes.HOTELDETAIL + '/' + hotel.id.toString(),
+                    arguments: {"hotelname": hotel.name});
                   },
                   icon: const Icon(CupertinoIcons.table_badge_more))
             ],
