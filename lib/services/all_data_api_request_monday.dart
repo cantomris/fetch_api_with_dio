@@ -7,7 +7,7 @@ class AllDataApiRequestMonday {
   final String url;
   final Map data;
 
-  AllDataApiRequestMonday({required this.url, required this.data});
+  AllDataApiRequestMonday({this.url, this.data});
 
   Dio _dio() {
     return Dio(

@@ -107,7 +107,7 @@ class Results {
     isSingleBay: json["is_single_bay"],
     categoryId: json["category_id"],
     locationId: json["location_id"],
-    saleCampaigns: List<SaleCampaign>.from(json["sale_campaigns"].map((x) => SaleCampaign.fromJson(x))),
+    saleCampaigns: json["sale_campaigns"] == null ? null : List<SaleCampaign>.from(json["sale_campaigns"].map((x) => SaleCampaign.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -136,7 +136,7 @@ class Results {
     "is_single_bay": isSingleBay,
     "category_id": categoryId,
     "location_id": locationId,
-    "sale_campaigns": List<dynamic>.from(saleCampaigns.map((x) => x.toJson())),
+    "sale_campaigns": saleCampaigns == null ? null : List<dynamic>.from(saleCampaigns.map((x) => x.toJson())),
   };
 }
 
@@ -374,7 +374,7 @@ class HotelListCacheModel {
     isVilla: json["is_villa"],
     hotelCampaigns: List<HotelCampaign>.from(json["hotel_campaigns"].map((x) => HotelCampaign.fromJson(x))),
     hotelValidCampaigns: json["hotel_valid_campaigns"],
-    saleCampaigns: List<dynamic>.from(json["sale_campaigns"].map((x) => x)),
+    saleCampaigns: json["sale_campaigns"] == null ? null : List<dynamic>.from(json["sale_campaigns"].map((x) => x)),
     insurances: json["insurances"],
     productActivities: List<dynamic>.from(json["product_activities"].map((x) => x)),
     hasEbInsurance: json["has_eb_insurance"],
@@ -428,7 +428,7 @@ class HotelListCacheModel {
     "is_villa": isVilla,
     "hotel_campaigns": List<dynamic>.from(hotelCampaigns.map((x) => x.toJson())),
     "hotel_valid_campaigns": hotelValidCampaigns,
-    "sale_campaigns": List<dynamic>.from(saleCampaigns.map((x) => x)),
+    "sale_campaigns": saleCampaigns == null ? null : List<dynamic>.from(saleCampaigns.map((x) => x)),
     "insurances": insurances,
     "product_activities": List<dynamic>.from(productActivities.map((x) => x)),
     "has_eb_insurance": hasEbInsurance,
@@ -494,7 +494,7 @@ class CampaignsOfType {
   });
 
   int hotelCampaignId;
-  int saleValue;
+  double saleValue;
   int stayDay;
   int paidDay;
   String hotelCampaignName;
@@ -505,7 +505,7 @@ class CampaignsOfType {
 
   factory CampaignsOfType.fromJson(Map<String, dynamic> json) => CampaignsOfType(
     hotelCampaignId: json["hotel_campaign_id"],
-    saleValue: json["sale_value"],
+    saleValue: json["sale_value"].toDouble(),
     stayDay: json["stay_day"],
     paidDay: json["paid_day"],
     hotelCampaignName: json["hotel_campaign_name"],
@@ -634,7 +634,7 @@ class Lokasyon {
     key: json["key"],
     id: json["id"],
     tur: json["tur"],
-    children: List<Lokasyon>.from(json["children"].map((x) => Lokasyon.fromJson(x))),
+    children: json['children'] == null ? null : List<Lokasyon>.from(json["children"].map((x) => Lokasyon.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -644,7 +644,7 @@ class Lokasyon {
     "key": key,
     "id": id,
     "tur": tur,
-    "children": List<dynamic>.from(children.map((x) => x.toJson())),
+    "children": List<dynamic>.from(children.map((x) => x.toJson())) ?? null,
   };
 }
 
@@ -688,7 +688,7 @@ class ProminentFilter {
   factory ProminentFilter.fromJson(Map<String, dynamic> json) => ProminentFilter(
     id: json["id"],
     icon: json["icon"] == null ? null : json["icon"],
-    description: json["description"],
+    description: json["description"] == null ? null : json["description"],
     descriptionDetail: json["description_detail"],
     cssClassName: json["css_class_name"] == null ? null : json["css_class_name"],
     isSelected: json["is_selected"],
