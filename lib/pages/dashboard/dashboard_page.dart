@@ -1,6 +1,7 @@
 import 'package:fetch_api_using_dio/pages/account/account_page.dart';
 import 'package:fetch_api_using_dio/pages/alerts/alerts_page.dart';
 import 'package:fetch_api_using_dio/pages/all_data/all_data_page.dart';
+import 'package:fetch_api_using_dio/pages/all_data_monday/all_data_page_monday.dart';
 import 'package:fetch_api_using_dio/pages/home/home_page.dart';
 import 'package:fetch_api_using_dio/pages/hotels/components/hotel_detail.dart';
 import 'package:fetch_api_using_dio/pages/hotels/hotels_page.dart';
@@ -26,7 +27,7 @@ class DashboardPage extends StatelessWidget {
               // HomePage(),
               // NewsPage(),
               PostsPage(),
-              AllDataPage(),
+              AllDataPageMonday(),
               AccountPage(),
               HotelsPage(),
               // UserPage(),

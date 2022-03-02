@@ -10,7 +10,7 @@ class UserProvider {
     ApiRequest(url: 'https://jsonplaceholder.typicode.com/users', data: null).get(
       beforeSend: () => { if (beforeSend != null) beforeSend() },
       onSuccess: (data) {
-        onSuccess((data as List).map((userJson) => User.fromJson(userJson)).toList());
+        onSuccess((data).map((userJson) => User.fromJson(userJson)).toList());
       },
       onError: (error) => { if(onError != null) onError(error) }
     );

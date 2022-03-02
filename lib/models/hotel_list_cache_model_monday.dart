@@ -1,43 +1,15 @@
 // To parse this JSON data, do
 //
-//     final hotelDataModelMonday = hotelDataModelMondayFromJson(jsonString);
+//     final hotelListCacheModelMonday = hotelListCacheModelMondayFromJson(jsonString);
 
 import 'dart:convert';
 
-HotelDataModelMonday hotelDataModelMondayFromJson(String str) => HotelDataModelMonday.fromJson(json.decode(str));
+HotelListCacheModelMonday hotelListCacheModelMondayFromJson(String str) => HotelListCacheModelMonday.fromJson(json.decode(str));
 
-String hotelDataModelMondayToJson(HotelDataModelMonday data) => json.encode(data.toJson());
+String hotelListCacheModelMondayToJson(HotelListCacheModelMonday data) => json.encode(data.toJson());
 
-class HotelDataModelMonday {
-  HotelDataModelMonday({
-    this.results,
-  });
-
-  Results results;
-
-  factory HotelDataModelMonday.fromJson(Map<String, dynamic> json) => HotelDataModelMonday(
-    results: Results.fromJson(json["results"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "results": results.toJson(),
-  };
-}
-
-class Results {
-  Results({
-    this.tabId,
-    this.listView,
-    this.price,
-    this.newPrice,
-    this.concept,
-    this.categories,
-    this.discountKeys,
-    this.lokasyon,
-    this.errorMesaj,
-    this.createDate,
-    this.prominentFilter,
-    this.hotelSearchResult,
+class HotelListCacheModelMonday {
+  HotelListCacheModelMonday({
     this.hotelListCacheModels,
     this.eventName,
     this.sortingName,
@@ -54,18 +26,6 @@ class Results {
     this.saleCampaigns,
   });
 
-  String tabId;
-  ListView listView;
-  Price price;
-  Price newPrice;
-  List<Concept> concept;
-  List<Category> categories;
-  List<DiscountKey> discountKeys;
-  List<Lokasyon> lokasyon;
-  dynamic errorMesaj;
-  DateTime createDate;
-  List<ProminentFilter> prominentFilter;
-  dynamic hotelSearchResult;
   List<HotelListCacheModel> hotelListCacheModels;
   String eventName;
   dynamic sortingName;
@@ -81,19 +41,7 @@ class Results {
   int locationId;
   List<SaleCampaign> saleCampaigns;
 
-  factory Results.fromJson(Map<String, dynamic> json) => Results(
-    tabId: json["tab_id"],
-    listView: ListView.fromJson(json["list_view"]),
-    price: Price.fromJson(json["price"]),
-    newPrice: Price.fromJson(json["new_price"]),
-    concept: List<Concept>.from(json["concept"].map((x) => Concept.fromJson(x))),
-    categories: List<Category>.from(json["categories"].map((x) => Category.fromJson(x))),
-    discountKeys: List<DiscountKey>.from(json["discount_keys"].map((x) => DiscountKey.fromJson(x))),
-    lokasyon: List<Lokasyon>.from(json["lokasyon"].map((x) => Lokasyon.fromJson(x))),
-    errorMesaj: json["error_mesaj"],
-    createDate: DateTime.parse(json["create_date"]),
-    prominentFilter: List<ProminentFilter>.from(json["prominent_filter"].map((x) => ProminentFilter.fromJson(x))),
-    hotelSearchResult: json["hotel_search_result"],
+  factory HotelListCacheModelMonday.fromJson(Map<String, dynamic> json) => HotelListCacheModelMonday(
     hotelListCacheModels: List<HotelListCacheModel>.from(json["hotel_list_cache_models"].map((x) => HotelListCacheModel.fromJson(x))),
     eventName: json["event_name"],
     sortingName: json["sorting_name"],
@@ -111,18 +59,6 @@ class Results {
   );
 
   Map<String, dynamic> toJson() => {
-    "tab_id": tabId,
-    "list_view": listView.toJson(),
-    "price": price.toJson(),
-    "new_price": newPrice.toJson(),
-    "concept": List<dynamic>.from(concept.map((x) => x.toJson())),
-    "categories": List<dynamic>.from(categories.map((x) => x.toJson())),
-    "discount_keys": List<dynamic>.from(discountKeys.map((x) => x.toJson())),
-    "lokasyon": List<dynamic>.from(lokasyon.map((x) => x.toJson())),
-    "error_mesaj": errorMesaj,
-    "create_date": createDate.toIso8601String(),
-    "prominent_filter": List<dynamic>.from(prominentFilter.map((x) => x.toJson())),
-    "hotel_search_result": hotelSearchResult,
     "hotel_list_cache_models": List<dynamic>.from(hotelListCacheModels.map((x) => x.toJson())),
     "event_name": eventName,
     "sorting_name": sortingName,
@@ -137,86 +73,6 @@ class Results {
     "category_id": categoryId,
     "location_id": locationId,
     "sale_campaigns": List<dynamic>.from(saleCampaigns.map((x) => x.toJson())),
-  };
-}
-
-class Category {
-  Category({
-    this.hotelName,
-    this.select,
-    this.id,
-    this.children,
-  });
-
-  String hotelName;
-  bool select;
-  String id;
-  List<Category> children;
-
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-    hotelName: json["hotel_name"],
-    select: json["select"],
-    id: json["id"],
-    children: json["children"] == null ? null : List<Category>.from(json["children"].map((x) => Category.fromJson(x))),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "hotel_name": hotelName,
-    "select": select,
-    "id": id,
-    "children": children == null ? null : List<dynamic>.from(children.map((x) => x.toJson())),
-  };
-}
-
-class Concept {
-  Concept({
-    this.name,
-    this.status,
-    this.id,
-    this.hotelCount,
-  });
-
-  String name;
-  bool status;
-  String id;
-  int hotelCount;
-
-  factory Concept.fromJson(Map<String, dynamic> json) => Concept(
-    name: json["name"],
-    status: json["status"],
-    id: json["id"],
-    hotelCount: json["hotel_count"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "name": name,
-    "status": status,
-    "id": id,
-    "hotel_count": hotelCount,
-  };
-}
-
-class DiscountKey {
-  DiscountKey({
-    this.id,
-    this.name,
-    this.status,
-  });
-
-  int id;
-  String name;
-  bool status;
-
-  factory DiscountKey.fromJson(Map<String, dynamic> json) => DiscountKey(
-    id: json["id"],
-    name: json["name"],
-    status: json["status"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "status": status,
   };
 }
 
@@ -494,7 +350,7 @@ class CampaignsOfType {
   });
 
   int hotelCampaignId;
-  int saleValue;
+  double saleValue;
   int stayDay;
   int paidDay;
   String hotelCampaignName;
@@ -505,7 +361,7 @@ class CampaignsOfType {
 
   factory CampaignsOfType.fromJson(Map<String, dynamic> json) => CampaignsOfType(
     hotelCampaignId: json["hotel_campaign_id"],
-    saleValue: json["sale_value"],
+    saleValue: json["sale_value"].toDouble(),
     stayDay: json["stay_day"],
     paidDay: json["paid_day"],
     hotelCampaignName: json["hotel_campaign_name"],
@@ -577,130 +433,6 @@ class HotelPropertyProminent {
     "css_class_name": cssClassName == null ? null : cssClassName,
     "description_detail": descriptionDetail,
     "hotel_property_prominent_id": hotelPropertyProminentId,
-  };
-}
-
-class ListView {
-  ListView({
-    this.listCount,
-    this.pageCount,
-    this.activePage,
-    this.totalHotelCount,
-  });
-
-  int listCount;
-  int pageCount;
-  int activePage;
-  int totalHotelCount;
-
-  factory ListView.fromJson(Map<String, dynamic> json) => ListView(
-    listCount: json["list_count"],
-    pageCount: json["page_count"],
-    activePage: json["active_page"],
-    totalHotelCount: json["total_hotel_count"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "list_count": listCount,
-    "page_count": pageCount,
-    "active_page": activePage,
-    "total_hotel_count": totalHotelCount,
-  };
-}
-
-class Lokasyon {
-  Lokasyon({
-    this.yerAd,
-    this.hotelCount,
-    this.select,
-    this.key,
-    this.id,
-    this.tur,
-    this.children,
-  });
-
-  String yerAd;
-  int hotelCount;
-  bool select;
-  String key;
-  String id;
-  dynamic tur;
-  List<Lokasyon> children;
-
-  factory Lokasyon.fromJson(Map<String, dynamic> json) => Lokasyon(
-    yerAd: json["yer_ad"],
-    hotelCount: json["hotel_count"],
-    select: json["select"],
-    key: json["key"],
-    id: json["id"],
-    tur: json["tur"],
-    children: List<Lokasyon>.from(json["children"].map((x) => Lokasyon.fromJson(x))),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "yer_ad": yerAd,
-    "hotel_count": hotelCount,
-    "select": select,
-    "key": key,
-    "id": id,
-    "tur": tur,
-    "children": List<dynamic>.from(children.map((x) => x.toJson())),
-  };
-}
-
-class Price {
-  Price({
-    this.min,
-    this.max,
-  });
-
-  double min;
-  double max;
-
-  factory Price.fromJson(Map<String, dynamic> json) => Price(
-    min: json["min"].toDouble(),
-    max: json["max"].toDouble(),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "min": min,
-    "max": max,
-  };
-}
-
-class ProminentFilter {
-  ProminentFilter({
-    this.id,
-    this.icon,
-    this.description,
-    this.descriptionDetail,
-    this.cssClassName,
-    this.isSelected,
-  });
-
-  int id;
-  String icon;
-  String description;
-  dynamic descriptionDetail;
-  String cssClassName;
-  bool isSelected;
-
-  factory ProminentFilter.fromJson(Map<String, dynamic> json) => ProminentFilter(
-    id: json["id"],
-    icon: json["icon"] == null ? null : json["icon"],
-    description: json["description"],
-    descriptionDetail: json["description_detail"],
-    cssClassName: json["css_class_name"] == null ? null : json["css_class_name"],
-    isSelected: json["is_selected"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "icon": icon == null ? null : icon,
-    "description": description,
-    "description_detail": descriptionDetail,
-    "css_class_name": cssClassName == null ? null : cssClassName,
-    "is_selected": isSelected,
   };
 }
 

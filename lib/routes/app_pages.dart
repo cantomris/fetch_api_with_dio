@@ -5,6 +5,7 @@ import 'package:fetch_api_using_dio/pages/alerts/alerts_binding.dart';
 import 'package:fetch_api_using_dio/pages/alerts/alerts_page.dart';
 import 'package:fetch_api_using_dio/pages/all_data/all_data_binding.dart';
 import 'package:fetch_api_using_dio/pages/all_data/all_data_page.dart';
+import 'package:fetch_api_using_dio/pages/all_data_monday/components/all_data_detail_monday.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_binding.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_page.dart';
 import 'package:fetch_api_using_dio/pages/home/home_binding.dart';
@@ -77,6 +78,10 @@ class AppPages {
     GetPage(
       name: '${AppRoutes.HOTELDETAIL}/:id',
       page: () => HotelDetailPage(),
+    ),
+    GetPage(
+      name: '${AppRoutes.MONDAYHOTELSDETAIL}/:id',
+      page: () => AllDataDetailMonday(),
     ),
   ];
 }
