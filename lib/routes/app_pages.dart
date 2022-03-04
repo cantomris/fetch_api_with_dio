@@ -1,6 +1,7 @@
 import 'package:fetch_api_using_dio/middleware/authentication_middleware.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_binding.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_page.dart';
+import 'package:fetch_api_using_dio/pages/hotel_list_search/components/hotel_detail_page.dart';
 import 'package:fetch_api_using_dio/pages/hotel_list_search/components/hotel_list_search_detail.dart';
 import 'package:fetch_api_using_dio/pages/hotel_list_search_detail/hotel_list_search_detail_binding.dart';
 import 'package:fetch_api_using_dio/pages/hotel_list_search_detail/hotel_list_search_detail_page.dart';
@@ -37,8 +38,8 @@ class AppPages {
         name: '${AppRoutes.HOTELLISTSEARCHHOTELDETAIL}/:id',
         page: () => HotelListSearchDetail()),
     GetPage(
-        name: AppRoutes.SEARCHDETAIL,
-        page: () => HotelListSearchDetailPage(),
+        name: '${AppRoutes.SEARCHDETAIL}/:id',
+        page: () => HotelDetailPage(),
         binding: HotelListSearchDetailBinding())
   ];
 }

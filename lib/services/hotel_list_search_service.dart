@@ -42,7 +42,7 @@ class HotelListSearchService {
     var body = jsonEncode(data);
     _dio().post(url, data: body).then((res) {
       if (onSuccess != null) {
-        debugPrint('HOTEL LIST DATA OK! ${res.data['data']['results']['search_parameters']}');
+        debugPrint('HOTEL LIST DATA OK!');
         return onSuccess(res.data);
       }
     }).catchError((error) {

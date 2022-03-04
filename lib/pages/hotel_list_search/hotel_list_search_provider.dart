@@ -15,7 +15,7 @@ class HotelListSearchProvider {
       }
     }
   };
-  void getAllData({
+  void getHotelList({
     Function() beforeSend,
     Function(dynamic data) onSuccess,
     Function(dynamic error) onError,

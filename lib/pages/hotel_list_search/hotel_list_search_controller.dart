@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 
 class HotelListSearchController extends GetxController{
   List <HotelListCacheModel> hotelSearchList = [];
-  // List <HotelListCacheModel> hotelListData = [];
   bool isLoading = true;
   @override
   void onInit() {
-    HotelListSearchProvider().getAllData(
+    HotelListSearchProvider().getHotelList(
         onSuccess: (hotels) {
           // hotelListData = hotelDataMonday.results.hotelListCacheModels;
 

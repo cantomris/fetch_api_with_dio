@@ -13,7 +13,7 @@ class HotelListSearchListItem extends StatelessWidget {
         child: InkWell(
       onTap: () {
         var arguments = {"hotel": hotel};
-        Get.toNamed(AppRoutes.HOTELLISTSEARCHHOTELDETAIL + '/' + hotel.id.toString(),
+        Get.toNamed(AppRoutes.SEARCHDETAIL + '/' + hotel.id.toString(),
             arguments: arguments);
       },
       // width: Get.mediaQuery.size.width,
