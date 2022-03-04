@@ -5,11 +5,13 @@ import 'package:fetch_api_using_dio/pages/alerts/alerts_binding.dart';
 import 'package:fetch_api_using_dio/pages/alerts/alerts_page.dart';
 import 'package:fetch_api_using_dio/pages/all_data/all_data_binding.dart';
 import 'package:fetch_api_using_dio/pages/all_data/all_data_page.dart';
-import 'package:fetch_api_using_dio/pages/all_data_monday/components/all_data_detail_monday.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_binding.dart';
 import 'package:fetch_api_using_dio/pages/dashboard/dashboard_page.dart';
 import 'package:fetch_api_using_dio/pages/home/home_binding.dart';
 import 'package:fetch_api_using_dio/pages/home/home_page.dart';
+import 'package:fetch_api_using_dio/pages/hotel_list_search/components/hotel_list_search_detail.dart';
+import 'package:fetch_api_using_dio/pages/hotel_list_search_detail/hotel_list_search_detail_binding.dart';
+import 'package:fetch_api_using_dio/pages/hotel_list_search_detail/hotel_list_search_detail_page.dart';
 import 'package:fetch_api_using_dio/pages/hotels/components/hotel_detail.dart';
 import 'package:fetch_api_using_dio/pages/hotels/hotels_binding.dart';
 import 'package:fetch_api_using_dio/pages/hotels/hotels_page.dart';
@@ -37,10 +39,9 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: AppRoutes.ACCOUNT,
-      page: () => AccountPage(),
-      binding: AccountBinding()
-    ),
+        name: AppRoutes.ACCOUNT,
+        page: () => AccountPage(),
+        binding: AccountBinding()),
     GetPage(
       name: AppRoutes.POSTS,
       page: () => PostsPage(),
@@ -52,13 +53,12 @@ class AppPages {
       binding: NewsBinding(),
     ),
     GetPage(
-      name: AppRoutes.DASHBOARD,
-      page: () => DashboardPage(),
-      binding: DashboardBinding(),
-        middlewares: [AuthenticationMiddleware()]
-    ),
+        name: AppRoutes.DASHBOARD,
+        page: () => DashboardPage(),
+        binding: DashboardBinding(),
+        middlewares: [AuthenticationMiddleware()]),
     GetPage(
-      name: AppRoutes.ALLDATAPAGE,
+      name: AppRoutes.HOTELLISTSEARCH,
       page: () => AllDataPage(),
       binding: AllDataBinding(),
     ),
@@ -67,10 +67,7 @@ class AppPages {
       page: () => HotelsPage(),
       binding: HotelBinding(),
     ),
-    GetPage(
-      name: '${AppRoutes.USERPAGE}/:id',
-      page: () => UserPage()
-    ),
+    GetPage(name: '${AppRoutes.USERPAGE}/:id', page: () => UserPage()),
     GetPage(
       name: '${AppRoutes.POSTDETAIL}/:id',
       page: () => PostDetailPage(),
@@ -80,8 +77,11 @@ class AppPages {
       page: () => HotelDetailPage(),
     ),
     GetPage(
-      name: '${AppRoutes.MONDAYHOTELSDETAIL}/:id',
-      page: () => AllDataDetailMonday(),
-    ),
+        name: '${AppRoutes.HOTELLISTSEARCHHOTELDETAIL}/:id',
+        page: () => HotelListSearchDetail()),
+    GetPage(
+        name: AppRoutes.SEARCHDETAIL,
+        page: () => HotelListSearchDetailPage(),
+        binding: HotelListSearchDetailBinding())
   ];
 }

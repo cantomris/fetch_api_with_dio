@@ -1,20 +1,20 @@
-import 'package:fetch_api_using_dio/models/hotel_data_model_monday.dart';
-import 'package:fetch_api_using_dio/pages/all_data_monday/all_data_provider_monday.dart';
+import 'package:fetch_api_using_dio/models/hotel_list_search_model.dart';
+import 'package:fetch_api_using_dio/pages/hotel_list_search/hotel_list_search_provider.dart';
 import 'package:get/get.dart';
 
-class AllDataControllerMonday extends GetxController{
-  List <HotelListCacheModel> hotelDataListMonday = [];
+class HotelListSearchController extends GetxController{
+  List <HotelListCacheModel> hotelSearchList = [];
   // List <HotelListCacheModel> hotelListData = [];
   bool isLoading = true;
   @override
   void onInit() {
-    AllDataProviderMonday().getAllData(
+    HotelListSearchProvider().getAllData(
         onSuccess: (hotels) {
           // hotelListData = hotelDataMonday.results.hotelListCacheModels;
 
-          hotelDataListMonday = hotels as List;
+          hotelSearchList = hotels as List;
           isLoading = false;
-          print('All data monday has been return Success');
+          print('Hotel List Search data has been success');
           update();
         },
         onError: (error) {

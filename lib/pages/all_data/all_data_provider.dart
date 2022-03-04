@@ -1,6 +1,6 @@
 import 'package:fetch_api_using_dio/models/price_model.dart';
 import 'package:fetch_api_using_dio/services/all_data_api_request.dart';
-import 'package:fetch_api_using_dio/services/test_api_request.dart';
+import 'package:fetch_api_using_dio/services/hotel_list_search_detail_service.dart';
 import 'package:fetch_api_using_dio/models/all_data_model.dart';
 
 class AllDataProvider {

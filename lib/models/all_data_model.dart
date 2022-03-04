@@ -601,7 +601,7 @@ class HotelPropertyProminent {
   int hotelPropertyProminentId;
 
   factory HotelPropertyProminent.fromJson(Map<String, dynamic> json) => HotelPropertyProminent(
-    hotelId: json["hotel_id"],
+    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
     icon: json["icon"] == null ? null : json["icon"],
     description: json["description"],
     cssClassName: json["css_class_name"] == null ? null : json["css_class_name"],
@@ -610,7 +610,7 @@ class HotelPropertyProminent {
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId,
+    "hotel_id": hotelId == null ? null : hotelId,
     "icon": icon == null ? null : icon,
     "description": description,
     "css_class_name": cssClassName == null ? null : cssClassName,

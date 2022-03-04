@@ -4,18 +4,18 @@
 
 import 'dart:convert';
 
-HotelDataModelMonday hotelDataModelMondayFromJson(String str) => HotelDataModelMonday.fromJson(json.decode(str));
+HotelListSearchModel hotelDataModelMondayFromJson(String str) => HotelListSearchModel.fromJson(json.decode(str));
 
-String hotelDataModelMondayToJson(HotelDataModelMonday data) => json.encode(data.toJson());
+String hotelDataModelMondayToJson(HotelListSearchModel data) => json.encode(data.toJson());
 
-class HotelDataModelMonday {
-  HotelDataModelMonday({
+class HotelListSearchModel {
+  HotelListSearchModel({
     this.results,
   });
 
   Results results;
 
-  factory HotelDataModelMonday.fromJson(Map<String, dynamic> json) => HotelDataModelMonday(
+  factory HotelListSearchModel.fromJson(Map<String, dynamic> json) => HotelListSearchModel(
     results: Results.fromJson(json["results"]),
   );
 

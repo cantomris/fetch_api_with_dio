@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AllDataDetailMonday extends StatelessWidget {
+class HotelListSearchDetail extends StatelessWidget {
   final hotel = Get.arguments['hotel'];
 
-  AllDataDetailMonday({Key key}) : super(key: key);
+  HotelListSearchDetail({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,26 @@ class AllDataDetailMonday extends StatelessWidget {
           child: Center(
               child: Column(
         children: [
-          Text(hotel.name),
-          Text(hotel.conceptName),
+          const Spacer(),
+          Text(hotel.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+          const SizedBox(height: 20),
           Text(hotel.hotelLocation),
+          Text(hotel.conceptName),
+          const SizedBox(height: 20),
           SizedBox(
             // width: Get.mediaQuery.size.width,
             height: 200,
             child: ListView.builder(
                 itemCount: hotel.hotelPropertyProminents.length,
                 itemBuilder: (context, index) =>
-                    Text(hotel.hotelPropertyProminents[index].description)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(hotel.hotelPropertyProminents[index].description),
+                      ],
+                    )),
           ),
+          const Spacer(),
         ],
       ))),
     );
