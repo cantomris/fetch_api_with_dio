@@ -19,7 +19,7 @@ class HotelListSearchDetailController extends GetxController{
           update();
         },
         onError: (error) {
-          print('There is something wrong with the detail controller post method => ${error}');
+          print('There is something wrong HOTEL DETAIL controller => ${error}');
           isLoading = false;
           update();
         });

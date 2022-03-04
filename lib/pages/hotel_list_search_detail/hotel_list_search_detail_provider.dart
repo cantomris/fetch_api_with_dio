@@ -10,7 +10,7 @@ class HotelListSearchDetailProvider {
     "language_type": "1",
     "channel_id": "1",
     "marketing_id": "1",
-    "hotel_id": 200,
+    "hotel_id": 2110,
     "checkIn": "2018-07-10",
     "checkOut": "2018-07-16",
     "hotelLocationAirports": [
@@ -74,10 +74,10 @@ class HotelListSearchDetailProvider {
     HotelListSearchDetailService(url: 'https://apiacente.gezinomi.com/hotel-details/index', data: data).get(
         beforeSend: () => {if (beforeSend != null) beforeSend()},
         onSuccess: (data) {
-          debugPrint("We've Got details ${data}");
+          // debugPrint("We've Got details ${data}");
           var hotelDetailData = HotelDetailModel.fromJson(data);
 
-          debugPrint("Hotel detail data ${hotelDetailData}");
+          // debugPrint("Hotel detail data ${hotelDetailData}");
           onSuccess(data);
         },
         onError: (error) => {if (onError != null) onError(error)});

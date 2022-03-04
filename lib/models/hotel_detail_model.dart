@@ -68,11 +68,11 @@ class Results {
   List<dynamic> paymentConditions;
   List<HotelCampaign> hotelCampaigns;
   List<SaleCampaign> saleCampaigns;
-  List<Insurance> insurances;
-  List<Announcement> announcements;
+  dynamic insurances;
+  List<dynamic> announcements;
 
   factory Results.fromJson(Map<String, dynamic> json) => Results(
-    rtData: json["rt_data"] == null ? null : RtData.fromJson(json["rt_data"]),
+    rtData: RtData.fromJson(json["rt_data"]),
     isCyprusHotel: json["is_cyprus_hotel"],
     isNotShowPriceDetail: json["is_not_show_price_detail"],
     packageSearch: json["package_search"],
@@ -83,12 +83,12 @@ class Results {
     paymentConditions: json["payment_conditions"] == null ? null : List<dynamic>.from(json["payment_conditions"].map((x) => x)),
     hotelCampaigns: json["hotel_campaigns"] == null ? null : List<HotelCampaign>.from(json["hotel_campaigns"].map((x) => HotelCampaign.fromJson(x))),
     saleCampaigns: json["sale_campaigns"] == null ? null : List<SaleCampaign>.from(json["sale_campaigns"].map((x) => SaleCampaign.fromJson(x))),
-    insurances: json["insurances"] == null ? null : List<Insurance>.from(json["insurances"].map((x) => Insurance.fromJson(x))),
-    announcements: json["announcements"] == null ? null : List<Announcement>.from(json["announcements"].map((x) => Announcement.fromJson(x))),
+    insurances: json["insurances"],
+    announcements: json["announcements"] == null ? null : List<dynamic>.from(json["announcements"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
-    "rt_data": rtData == null ? null : rtData.toJson(),
+    "rt_data": rtData.toJson(),
     "is_cyprus_hotel": isCyprusHotel,
     "is_not_show_price_detail": isNotShowPriceDetail,
     "package_search": packageSearch,
@@ -99,8 +99,8 @@ class Results {
     "payment_conditions": paymentConditions == null ? null : List<dynamic>.from(paymentConditions.map((x) => x)),
     "hotel_campaigns": hotelCampaigns == null ? null : List<dynamic>.from(hotelCampaigns.map((x) => x.toJson())),
     "sale_campaigns": saleCampaigns == null ? null : List<dynamic>.from(saleCampaigns.map((x) => x.toJson())),
-    "insurances": insurances == null ? null : List<dynamic>.from(insurances.map((x) => x.toJson())),
-    "announcements": announcements == null ? null : List<dynamic>.from(announcements.map((x) => x.toJson())),
+    "insurances": insurances,
+    "announcements": announcements == null ? null : List<dynamic>.from(announcements.map((x) => x)),
   };
 }
 
@@ -170,134 +170,6 @@ final countryNameValues = EnumValues({
   "Türkiye": CountryName.TRKIYE
 });
 
-class Announcement {
-  Announcement({
-    this.translate,
-    this.announcementReferences,
-    this.announcementId,
-    this.productGroupId,
-    this.title,
-    this.shortText,
-    this.description,
-    this.startDate,
-    this.endDate,
-    this.smallImagePath,
-    this.bigImagePath,
-    this.announcementTypeId,
-    this.isPopUp,
-    this.orderNumber,
-    this.isIndefinite,
-    this.isActive,
-    this.isDeleted,
-    this.applicationId,
-    this.permalink,
-    this.isInstant,
-    this.isDefaultImage,
-    this.imageTitle,
-    this.imageSlogan,
-    this.imageDetail,
-    this.defaultImagePath,
-    this.createdBy,
-    this.changedBy,
-    this.createdDate,
-    this.changedDate,
-  });
-
-  List<dynamic> translate;
-  dynamic announcementReferences;
-  int announcementId;
-  int productGroupId;
-  String title;
-  String shortText;
-  String description;
-  dynamic startDate;
-  dynamic endDate;
-  String smallImagePath;
-  String bigImagePath;
-  int announcementTypeId;
-  bool isPopUp;
-  int orderNumber;
-  bool isIndefinite;
-  bool isActive;
-  bool isDeleted;
-  int applicationId;
-  String permalink;
-  bool isInstant;
-  dynamic isDefaultImage;
-  dynamic imageTitle;
-  dynamic imageSlogan;
-  dynamic imageDetail;
-  dynamic defaultImagePath;
-  int createdBy;
-  int changedBy;
-  DateTime createdDate;
-  DateTime changedDate;
-
-  factory Announcement.fromJson(Map<String, dynamic> json) => Announcement(
-    translate: json["translate"] == null ? null : List<dynamic>.from(json["translate"].map((x) => x)),
-    announcementReferences: json["announcement_references"],
-    announcementId: json["announcement_id"],
-    productGroupId: json["product_group_id"],
-    title: json["title"],
-    shortText: json["short_text"],
-    description: json["description"],
-    startDate: json["start_date"],
-    endDate: json["end_date"],
-    smallImagePath: json["small_image_path"],
-    bigImagePath: json["big_image_path"],
-    announcementTypeId: json["announcement_type_id"],
-    isPopUp: json["is_pop_up"],
-    orderNumber: json["order_number"],
-    isIndefinite: json["is_indefinite"],
-    isActive: json["is_active"],
-    isDeleted: json["is_deleted"],
-    applicationId: json["application_id"],
-    permalink: json["permalink"],
-    isInstant: json["is_instant"],
-    isDefaultImage: json["is_default_image"],
-    imageTitle: json["image_title"],
-    imageSlogan: json["image_slogan"],
-    imageDetail: json["image_detail"],
-    defaultImagePath: json["default_image_path"],
-    createdBy: json["created_by"],
-    changedBy: json["changed_by"],
-    createdDate: DateTime.parse(json["created_date"]),
-    changedDate: DateTime.parse(json["changed_date"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "translate": translate == null ? null : List<dynamic>.from(translate.map((x) => x)),
-    "announcement_references": announcementReferences,
-    "announcement_id": announcementId,
-    "product_group_id": productGroupId,
-    "title": title,
-    "short_text": shortText,
-    "description": description,
-    "start_date": startDate,
-    "end_date": endDate,
-    "small_image_path": smallImagePath,
-    "big_image_path": bigImagePath,
-    "announcement_type_id": announcementTypeId,
-    "is_pop_up": isPopUp,
-    "order_number": orderNumber,
-    "is_indefinite": isIndefinite,
-    "is_active": isActive,
-    "is_deleted": isDeleted,
-    "application_id": applicationId,
-    "permalink": permalink,
-    "is_instant": isInstant,
-    "is_default_image": isDefaultImage,
-    "image_title": imageTitle,
-    "image_slogan": imageSlogan,
-    "image_detail": imageDetail,
-    "default_image_path": defaultImagePath,
-    "created_by": createdBy,
-    "changed_by": changedBy,
-    "created_date": createdDate.toIso8601String(),
-    "changed_date": changedDate.toIso8601String(),
-  };
-}
-
 class HotelCampaign {
   HotelCampaign({
     this.groupTitle,
@@ -327,7 +199,7 @@ class HotelCampaign {
     discountTypeCategoryEnum: json["discount_type_category_enum"],
     discountTypeCategory: json["discount_type_category"],
     isExtraDiscount: json["is_extra_discount"],
-    campaignsOfType: json["campaigns_of_type"] == null ? null : List<CampaignsOfType>.from(json["campaigns_of_type"].map((x) => CampaignsOfType.fromJson(x))),
+    campaignsOfType: json["campaigns_of_type"]  == null ? null : List<CampaignsOfType>.from(json["campaigns_of_type"].map((x) => CampaignsOfType.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -338,7 +210,7 @@ class HotelCampaign {
     "discount_type_category_enum": discountTypeCategoryEnum,
     "discount_type_category": discountTypeCategory,
     "is_extra_discount": isExtraDiscount,
-    "campaigns_of_type": campaignsOfType == null ? null : List<dynamic>.from(campaignsOfType.map((x) => x.toJson())),
+    "campaigns_of_type": campaignsOfType  == null ? null : List<dynamic>.from(campaignsOfType.map((x) => x.toJson())),
   };
 }
 
@@ -356,7 +228,7 @@ class CampaignsOfType {
   });
 
   int hotelCampaignId;
-  int saleValue;
+  double saleValue;
   int stayDay;
   int paidDay;
   String hotelCampaignName;
@@ -372,7 +244,7 @@ class CampaignsOfType {
     paidDay: json["paid_day"],
     hotelCampaignName: json["hotel_campaign_name"],
     isExtraDiscount: json["is_extra_discount"],
-    campaigins: json["campaigins"] == null ? null : List<Campaigin>.from(json["campaigins"].map((x) => Campaigin.fromJson(x))),
+    campaigins: json["campaigins"]  == null ? null : List<Campaigin>.from(json["campaigins"].map((x) => Campaigin.fromJson(x))),
     hotelCampaignDescription: json["hotel_campaign_description"],
     discountKeyId: json["discount_key_id"],
   );
@@ -384,7 +256,7 @@ class CampaignsOfType {
     "paid_day": paidDay,
     "hotel_campaign_name": hotelCampaignName,
     "is_extra_discount": isExtraDiscount,
-    "campaigins": campaigins == null ? null : List<dynamic>.from(campaigins.map((x) => x.toJson())),
+    "campaigins": campaigins  == null ? null : List<dynamic>.from(campaigins.map((x) => x.toJson())),
     "hotel_campaign_description": hotelCampaignDescription,
     "discount_key_id": discountKeyId,
   };
@@ -403,30 +275,6 @@ class Campaigin {
 
   Map<String, dynamic> toJson() => {
     "hotel_campaign_rule_description": hotelCampaignRuleDescription,
-  };
-}
-
-class Insurance {
-  Insurance({
-    this.insuranceId,
-    this.title,
-    this.description,
-  });
-
-  int insuranceId;
-  String title;
-  String description;
-
-  factory Insurance.fromJson(Map<String, dynamic> json) => Insurance(
-    insuranceId: json["insurance_id"],
-    title: json["title"],
-    description: json["description"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "insurance_id": insuranceId,
-    "title": title,
-    "description": description,
   };
 }
 
@@ -502,8 +350,8 @@ class RtData {
   String longitude;
   bool isSingleMan;
   List<dynamic> hotelProductActivityCache;
-  String hotelOpenDate;
-  String hotelCloseDate;
+  dynamic hotelOpenDate;
+  dynamic hotelCloseDate;
   dynamic hotelOpenText;
   bool isHotelOpenInYear;
   String childInfo;
@@ -511,14 +359,14 @@ class RtData {
   HotelDetail hotelDetail;
   int childAge1Min;
   int childAge1Max;
-  int childAge2Max;
+  dynamic childAge2Max;
   bool isAdultHotel;
-  int childAge2Min;
+  dynamic childAge2Min;
   dynamic minimumAcceptedAge;
   BreadCrumbDto breadCrumbDto;
 
   factory RtData.fromJson(Map<String, dynamic> json) => RtData(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     checkIn: json["check_in"],
     checkOut: json["check_out"],
     productId: json["product_id"],
@@ -526,43 +374,43 @@ class RtData {
     hotelName: json["hotel_name"],
     defaultConceptName: json["default_concept_name"],
     navigationName: json["navigation_name"],
-    pictures: json["pictures"] == null ? null : List<Picture>.from(json["pictures"].map((x) => Picture.fromJson(x))),
-    categories: json["categories"] == null ? null : List<Category>.from(json["categories"].map((x) => Category.fromJson(x))),
+    pictures: json["pictures"]  == null ? null : List<Picture>.from(json["pictures"].map((x) => Picture.fromJson(x))),
+    categories: json["categories"]  == null ? null : List<Category>.from(json["categories"].map((x) => Category.fromJson(x))),
     returnItem: json["return_item"],
-    descriptions: json["descriptions"] == null ? null : List<Description>.from(json["descriptions"].map((x) => Description.fromJson(x))),
-    propertyList: json["property_list"] == null ? null : List<PropertyList>.from(json["property_list"].map((x) => PropertyList.fromJson(x))),
+    descriptions: json["descriptions"]  == null ? null : List<Description>.from(json["descriptions"].map((x) => Description.fromJson(x))),
+    propertyList: json["property_list"]  == null ? null : List<PropertyList>.from(json["property_list"].map((x) => PropertyList.fromJson(x))),
     criterias: Criterias.fromJson(json["criterias"]),
     childAgeAndPriceDto: ChildAgeAndPriceDto.fromJson(json["child_age_and_price_dto"]),
     reservationInfos: json["reservation_infos"],
     virtualTourLink: json["virtual_tour_link"],
     ebInsurance: json["eb_insurance"],
-    videoList: json["video_list"] == null ? null : List<VideoList>.from(json["video_list"].map((x) => VideoList.fromJson(x))),
+    videoList: json["video_list"]  == null ? null : List<VideoList>.from(json["video_list"].map((x) => VideoList.fromJson(x))),
     cheapestPriceUnitIcon: json["cheapest_price_unit_icon"],
-    hotelConcepts: json["hotel_concepts"] == null ? null : List<HotelConcept>.from(json["hotel_concepts"].map((x) => HotelConcept.fromJson(x))),
+    hotelConcepts: json["hotel_concepts"]  == null ? null : List<HotelConcept>.from(json["hotel_concepts"].map((x) => HotelConcept.fromJson(x))),
     displayPrice: DisplayPrice.fromJson(json["display_price"]),
-    airports: json["airports"] == null ? null : List<Airport>.from(json["airports"].map((x) => Airport.fromJson(x))),
+    airports: json["airports"]  == null ? null : List<Airport>.from(json["airports"].map((x) => Airport.fromJson(x))),
     latitude: json["latitude"],
     longitude: json["longitude"],
     isSingleMan: json["is_single_man"],
-    hotelProductActivityCache: json["hotel_product_activity_cache"] == null ? null : List<dynamic>.from(json["hotel_product_activity_cache"].map((x) => x)),
+    hotelProductActivityCache: json["hotel_product_activity_cache"]  == null ? null : List<dynamic>.from(json["hotel_product_activity_cache"].map((x) => x)),
     hotelOpenDate: json["hotel_open_date"],
     hotelCloseDate: json["hotel_close_date"],
     hotelOpenText: json["hotel_open_text"],
     isHotelOpenInYear: json["is_hotel_open_in_year"],
     childInfo: json["child_info"],
-    hotelPropertyProminentCacheModels: json["hotel_property_prominent_cache_models"] == null ? null : List<HotelPropertyProminentCacheModel>.from(json["hotel_property_prominent_cache_models"].map((x) => HotelPropertyProminentCacheModel.fromJson(x))),
+    hotelPropertyProminentCacheModels: json["hotel_property_prominent_cache_models"]  == null ? null : List<HotelPropertyProminentCacheModel>.from(json["hotel_property_prominent_cache_models"].map((x) => HotelPropertyProminentCacheModel.fromJson(x))),
     hotelDetail: HotelDetail.fromJson(json["hotel_detail"]),
-    childAge1Min: json["child_age1_min"],
-    childAge1Max: json["child_age1_max"],
-    childAge2Max: json["child_age2_max"],
-    isAdultHotel: json["is_adult_hotel"],
-    childAge2Min: json["child_age2_min"],
+    childAge1Min: json["child_age1_min"] == null ? null : json["child_age1_min"],
+    childAge1Max: json["child_age1_max"] == null ? null : json["child_age1_max"],
+    childAge2Max: json["child_age2_max"] == null ? null : json["child_age2_max"],
+    isAdultHotel: json["is_adult_hotel"] == null ? null : json["is_adult_hotel"],
+    childAge2Min: json["child_age2_min"] == null ? null : json["child_age2_min"],
     minimumAcceptedAge: json["minimum_accepted_age"],
     breadCrumbDto: BreadCrumbDto.fromJson(json["bread_crumb_dto"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "check_in": checkIn,
     "check_out": checkOut,
     "product_id": productId,
@@ -570,31 +418,31 @@ class RtData {
     "hotel_name": hotelName,
     "default_concept_name": defaultConceptName,
     "navigation_name": navigationName,
-    "pictures": pictures == null ? null : List<dynamic>.from(pictures.map((x) => x.toJson())),
-    "categories": categories == null ? null : List<dynamic>.from(categories.map((x) => x.toJson())),
+    "pictures": pictures  == null ? null : List<dynamic>.from(pictures.map((x) => x.toJson())),
+    "categories": categories  == null ? null : List<dynamic>.from(categories.map((x) => x.toJson())),
     "return_item": returnItem,
-    "descriptions": descriptions == null ? null : List<dynamic>.from(descriptions.map((x) => x.toJson())),
-    "property_list": propertyList == null ? null : List<dynamic>.from(propertyList.map((x) => x.toJson())),
+    "descriptions": descriptions  == null ? null : List<dynamic>.from(descriptions.map((x) => x.toJson())),
+    "property_list": propertyList  == null ? null : List<dynamic>.from(propertyList.map((x) => x.toJson())),
     "criterias": criterias.toJson(),
     "child_age_and_price_dto": childAgeAndPriceDto.toJson(),
     "reservation_infos": reservationInfos,
     "virtual_tour_link": virtualTourLink,
     "eb_insurance": ebInsurance,
-    "video_list": videoList == null ? null : List<dynamic>.from(videoList.map((x) => x.toJson())),
+    "video_list": videoList  == null ? null : List<dynamic>.from(videoList.map((x) => x.toJson())),
     "cheapest_price_unit_icon": cheapestPriceUnitIcon,
-    "hotel_concepts": hotelConcepts == null ? null : List<dynamic>.from(hotelConcepts.map((x) => x.toJson())),
+    "hotel_concepts": cheapestPriceUnitIcon  == null ? null : List<dynamic>.from(hotelConcepts.map((x) => x.toJson())),
     "display_price": displayPrice.toJson(),
-    "airports": airports == null ? null : List<dynamic>.from(airports.map((x) => x.toJson())),
+    "airports": hotelConcepts  == null ? null : List<dynamic>.from(airports.map((x) => x.toJson())),
     "latitude": latitude,
     "longitude": longitude,
     "is_single_man": isSingleMan,
-    "hotel_product_activity_cache": hotelProductActivityCache == null ? null : List<dynamic>.from(hotelProductActivityCache.map((x) => x)),
+    "hotel_product_activity_cache": airports  == null ? null : List<dynamic>.from(hotelProductActivityCache.map((x) => x)),
     "hotel_open_date": hotelOpenDate,
     "hotel_close_date": hotelCloseDate,
     "hotel_open_text": hotelOpenText,
     "is_hotel_open_in_year": isHotelOpenInYear,
     "child_info": childInfo,
-    "hotel_property_prominent_cache_models": hotelPropertyProminentCacheModels == null ? null : List<dynamic>.from(hotelPropertyProminentCacheModels.map((x) => x.toJson())),
+    "hotel_property_prominent_cache_models": hotelProductActivityCache  == null ? null : List<dynamic>.from(hotelPropertyProminentCacheModels.map((x) => x.toJson())),
     "hotel_detail": hotelDetail.toJson(),
     "child_age1_min": childAge1Min,
     "child_age1_max": childAge1Max,
@@ -637,7 +485,7 @@ class BreadCrumbDto {
   dynamic displayName;
   Location cityLocation;
   Location districtLocation;
-  Location streetLocation;
+  dynamic streetLocation;
   dynamic hotelCategoryUrl;
   int breadCrumbType;
   dynamic otelAnaSayfaRouter;
@@ -662,7 +510,7 @@ class BreadCrumbDto {
     displayName: json["display_name"],
     cityLocation: Location.fromJson(json["city_location"]),
     districtLocation: Location.fromJson(json["district_location"]),
-    streetLocation: Location.fromJson(json["street_location"]),
+    streetLocation: json["street_location"],
     hotelCategoryUrl: json["hotel_category_url"],
     breadCrumbType: json["bread_crumb_type"],
     otelAnaSayfaRouter: json["otel_ana_sayfa_router"],
@@ -688,7 +536,7 @@ class BreadCrumbDto {
     "display_name": displayName,
     "city_location": cityLocation.toJson(),
     "district_location": districtLocation.toJson(),
-    "street_location": streetLocation.toJson(),
+    "street_location": streetLocation,
     "hotel_category_url": hotelCategoryUrl,
     "bread_crumb_type": breadCrumbType,
     "otel_ana_sayfa_router": otelAnaSayfaRouter,
@@ -734,7 +582,7 @@ class Location {
   int layer;
   int cityId;
   int distrinctId;
-  int streetId;
+  dynamic streetId;
   String link;
   bool seoIsPopular;
   bool seoShowInNavigationSub;
@@ -749,11 +597,11 @@ class Location {
     layer: json["layer"],
     cityId: json["city_id"],
     distrinctId: json["distrinct_id"] == null ? null : json["distrinct_id"],
-    streetId: json["street_id"] == null ? null : json["street_id"],
+    streetId: json["street_id"],
     link: json["link"],
     seoIsPopular: json["seo_is_popular"],
     seoShowInNavigationSub: json["seo_show_in_navigation_sub"],
-    hotelIds: json["hotel_ids"] == null ? null : List<int>.from(json["hotel_ids"].map((x) => x)),
+    hotelIds: json["hotel_ids"]  == null ? null : List<int>.from(json["hotel_ids"].map((x) => x)),
     id: json["id"],
   );
 
@@ -765,11 +613,11 @@ class Location {
     "layer": layer,
     "city_id": cityId,
     "distrinct_id": distrinctId == null ? null : distrinctId,
-    "street_id": streetId == null ? null : streetId,
+    "street_id": streetId,
     "link": link,
     "seo_is_popular": seoIsPopular,
     "seo_show_in_navigation_sub": seoShowInNavigationSub,
-    "hotel_ids": hotelIds == null ? null : List<dynamic>.from(hotelIds.map((x) => x)),
+    "hotel_ids": hotelIds  == null ? null : List<dynamic>.from(hotelIds.map((x) => x)),
     "id": id,
   };
 }
@@ -794,7 +642,7 @@ class Category {
   int orderId;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     name: json["name"],
     hotelCategoryId: json["hotel_category_id"],
     permaLink: json["perma_link"],
@@ -804,7 +652,7 @@ class Category {
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "name": name,
     "hotel_category_id": hotelCategoryId,
     "perma_link": permaLink,
@@ -824,8 +672,8 @@ class ChildAgeAndPriceDto {
     this.child2,
   });
 
-  int dpp;
-  int dppInTl;
+  double dpp;
+  double dppInTl;
   dynamic unitCode;
   dynamic unitCodeInTl;
   dynamic child1;
@@ -888,7 +736,7 @@ class Criterias {
   factory Criterias.fromJson(Map<String, dynamic> json) => Criterias(
     checkInDate: DateTime.parse(json["check_in_date"]),
     checkOutDate: DateTime.parse(json["check_out_date"]),
-    rooms: json["rooms"] == null ? null : List<Room>.from(json["rooms"].map((x) => Room.fromJson(x))),
+    rooms: json["rooms"]  == null ? null : List<Room>.from(json["rooms"].map((x) => Room.fromJson(x))),
     marketingId: json["marketing_id"],
     channelId: json["channel_id"],
     finalUnit: json["final_unit"],
@@ -906,7 +754,7 @@ class Criterias {
   Map<String, dynamic> toJson() => {
     "check_in_date": checkInDate.toIso8601String(),
     "check_out_date": checkOutDate.toIso8601String(),
-    "rooms": rooms == null ? null : List<dynamic>.from(rooms.map((x) => x.toJson())),
+    "rooms": rooms  == null ? null : List<dynamic>.from(rooms.map((x) => x.toJson())),
     "marketing_id": marketingId,
     "channel_id": channelId,
     "final_unit": finalUnit,
@@ -1153,7 +1001,7 @@ class DisplayPrice {
     unitId: json["unit_id"],
     price: json["price"],
     isContract: json["is_contract"],
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     productId: json["product_id"],
     name: json["name"],
     link: json["link"],
@@ -1207,7 +1055,7 @@ class DisplayPrice {
     "unit_id": unitId,
     "price": price,
     "is_contract": isContract,
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "product_id": productId,
     "name": name,
     "link": link,
@@ -1272,12 +1120,12 @@ class HotelConcept {
   dynamic changedDate;
 
   factory HotelConcept.fromJson(Map<String, dynamic> json) => HotelConcept(
-    translate:json["translate"] == null ? null :  List<dynamic>.from(json["translate"].map((x) => x)),
     conceptType: ConceptType.fromJson(json["concept_type"]),
+    translate: json["translate"] == null ? null : List<dynamic>.from(json["translate"].map((x) => x)),
     hotel: json["hotel"],
     hotelConceptId: json["hotel_concept_id"],
     conceptTypeId: json["concept_type_id"],
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     isActive: json["is_active"],
     isDefault: json["is_default"],
     description: json["description"],
@@ -1294,7 +1142,7 @@ class HotelConcept {
     "hotel": hotel,
     "hotel_concept_id": hotelConceptId,
     "concept_type_id": conceptTypeId,
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "is_active": isActive,
     "is_default": isDefault,
     "description": description,
@@ -1332,7 +1180,7 @@ class ConceptType {
   dynamic iconFileName;
   bool isActive;
   bool isDeleted;
-  String description;
+  dynamic description;
   dynamic conceptTypeGroupId;
   dynamic conceptGroupName;
   dynamic conceptTypeGroup;
@@ -1440,10 +1288,10 @@ class HotelDetail {
   });
 
   bool isHotelOpenInYear;
-  String hotelOpenDate;
-  String hotelCloseDate;
+  dynamic hotelOpenDate;
+  dynamic hotelCloseDate;
   String hotelOpenText;
-  int callCenterMailBoxId;
+  dynamic callCenterMailBoxId;
   int hotelId;
   bool isContract;
   int productId;
@@ -1453,7 +1301,7 @@ class HotelDetail {
   String latitude;
   String longitude;
   bool isSingleMan;
-  int priority;
+  double priority;
   int parentId;
   int hotelLocationId;
   String hotelLocation;
@@ -1462,7 +1310,7 @@ class HotelDetail {
   bool isEBinsurance;
   bool isInsuranceExist;
   String vatKeyId;
-  String mapCode;
+  dynamic mapCode;
   bool isMenWithChild;
   bool isWithoutWomen;
   bool isCyprusHotel;
@@ -1470,7 +1318,7 @@ class HotelDetail {
   String childInfo;
   int totalPhoto;
   bool isRecommended;
-  double hotelCommandRating;
+  dynamic hotelCommandRating;
   List<HotelVideoCacheModel> hotelVideoCacheModels;
   List<HotelPictureCacheModel> hotelPictureCacheModels;
   List<HotelDescriptionCacheModel> hotelDescriptionCacheModels;
@@ -1484,8 +1332,8 @@ class HotelDetail {
   List<int> hotelLocationAirportIds;
   int childAge1Min;
   int childAge1Max;
-  int childAge2Min;
-  int childAge2Max;
+  dynamic childAge2Min;
+  dynamic childAge2Max;
   bool isAdultHotel;
   bool isCityHotel;
   bool isVilla;
@@ -1503,7 +1351,7 @@ class HotelDetail {
     hotelCloseDate: json["hotel_close_date"],
     hotelOpenText: json["hotel_open_text"],
     callCenterMailBoxId: json["call_center_mail_box_id"],
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     isContract: json["is_contract"],
     productId: json["product_id"],
     name: json["name"],
@@ -1529,7 +1377,7 @@ class HotelDetail {
     childInfo: json["child_info"],
     totalPhoto: json["total_photo"],
     isRecommended: json["is_recommended"],
-    hotelCommandRating: json["hotel_command_rating"].toDouble(),
+    hotelCommandRating: json["hotel_command_rating"],
     hotelVideoCacheModels: json["hotel_video_cache_models"] == null ? null : List<HotelVideoCacheModel>.from(json["hotel_video_cache_models"].map((x) => HotelVideoCacheModel.fromJson(x))),
     hotelPictureCacheModels: json["hotel_picture_cache_models"] == null ? null : List<HotelPictureCacheModel>.from(json["hotel_picture_cache_models"].map((x) => HotelPictureCacheModel.fromJson(x))),
     hotelDescriptionCacheModels: json["hotel_description_cache_models"] == null ? null : List<HotelDescriptionCacheModel>.from(json["hotel_description_cache_models"].map((x) => HotelDescriptionCacheModel.fromJson(x))),
@@ -1563,7 +1411,7 @@ class HotelDetail {
     "hotel_close_date": hotelCloseDate,
     "hotel_open_text": hotelOpenText,
     "call_center_mail_box_id": callCenterMailBoxId,
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "is_contract": isContract,
     "product_id": productId,
     "name": name,
@@ -1626,20 +1474,20 @@ class HotelConceptTypeCacheModel {
     this.description,
   });
 
-  int hotelId;
+  dynamic hotelId;
   int conceptTypeId;
   bool isDefault;
-  String description;
+  dynamic description;
 
   factory HotelConceptTypeCacheModel.fromJson(Map<String, dynamic> json) => HotelConceptTypeCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     conceptTypeId: json["concept_type_id"],
     isDefault: json["is_default"],
     description: json["description"],
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "concept_type_id": conceptTypeId,
     "is_default": isDefault,
     "description": description,
@@ -1707,7 +1555,7 @@ class HotelPictureCacheModel {
   bool isDefault;
   int orderNumber;
   int pictureCategoryId;
-  CategoryName pictureCategoryName;
+  CampaignType pictureCategoryName;
   int pictureCategoryOrderNumber;
   int hotelRoomId;
   String alt;
@@ -1721,7 +1569,7 @@ class HotelPictureCacheModel {
     isDefault: json["is_default"],
     orderNumber: json["order_number"],
     pictureCategoryId: json["picture_category_id"],
-    pictureCategoryName: categoryNameValues.map[json["picture_category_name"]],
+    pictureCategoryName: campaignTypeValues.map[json["picture_category_name"]],
     pictureCategoryOrderNumber: json["picture_category_order_number"],
     hotelRoomId: json["hotel_room_id"] == null ? null : json["hotel_room_id"],
     alt: json["alt"],
@@ -1736,7 +1584,7 @@ class HotelPictureCacheModel {
     "is_default": isDefault,
     "order_number": orderNumber,
     "picture_category_id": pictureCategoryId,
-    "picture_category_name": categoryNameValues.reverse[pictureCategoryName],
+    "picture_category_name": campaignTypeValues.reverse[pictureCategoryName],
     "picture_category_order_number": pictureCategoryOrderNumber,
     "hotel_room_id": hotelRoomId == null ? null : hotelRoomId,
     "alt": alt,
@@ -1746,15 +1594,16 @@ class HotelPictureCacheModel {
   };
 }
 
-enum CategoryName { ODA, GENEL, AKTIVITE, PLAJ_HAVUZ, YEME_ME, OCUK }
+enum CampaignType { ODA, GENEL, YEME_ME, PLAJ_HAVUZ, TOPLANT, SPOR, SPA_WELLNESS }
 
-final categoryNameValues = EnumValues({
-  "Aktivite": CategoryName.AKTIVITE,
-  "Genel": CategoryName.GENEL,
-  "Çocuk": CategoryName.OCUK,
-  "Oda": CategoryName.ODA,
-  "Plaj & Havuz": CategoryName.PLAJ_HAVUZ,
-  "Yeme & İçme": CategoryName.YEME_ME
+final campaignTypeValues = EnumValues({
+  "Genel": CampaignType.GENEL,
+  "Oda": CampaignType.ODA,
+  "Plaj & Havuz": CampaignType.PLAJ_HAVUZ,
+  "Spa & Wellness": CampaignType.SPA_WELLNESS,
+  "Spor": CampaignType.SPOR,
+  "Toplantı": CampaignType.TOPLANT,
+  "Yeme & İçme": CampaignType.YEME_ME
 });
 
 class HotelPropertyCacheModel {
@@ -1778,26 +1627,26 @@ class HotelPropertyCacheModel {
   int hotelPropertId;
   String name;
   int hotelPropertyGroupId;
-  PropertyGroupName hotelPropertyGroupName;
+  String hotelPropertyGroupName;
   bool isFromDate;
   bool isThereAFee;
   String description;
-  int value;
+  double value;
   String iconPath;
   bool isNeededValue;
   int unitId;
   dynamic validDaysList;
 
   factory HotelPropertyCacheModel.fromJson(Map<String, dynamic> json) => HotelPropertyCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     hotelPropertId: json["hotel_propert_id"],
     name: json["name"],
     hotelPropertyGroupId: json["hotel_property_group_id"],
-    hotelPropertyGroupName: propertyGroupNameValues.map[json["hotel_property_group_name"]],
+    hotelPropertyGroupName: json["hotel_property_group_name"],
     isFromDate: json["is_from_date"],
     isThereAFee: json["is_there_a_fee"],
     description: json["description"] == null ? null : json["description"],
-    value: json["value"] == null ? null : json["value"],
+    value: json["value"] == null ? null : json["value"].toDouble(),
     iconPath: json["icon_path"] == null ? null : json["icon_path"],
     isNeededValue: json["is_needed_value"],
     unitId: json["unit_id"] == null ? null : json["unit_id"],
@@ -1805,11 +1654,11 @@ class HotelPropertyCacheModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "hotel_propert_id": hotelPropertId,
     "name": name,
     "hotel_property_group_id": hotelPropertyGroupId,
-    "hotel_property_group_name": propertyGroupNameValues.reverse[hotelPropertyGroupName],
+    "hotel_property_group_name": hotelPropertyGroupName,
     "is_from_date": isFromDate,
     "is_there_a_fee": isThereAFee,
     "description": description == null ? null : description,
@@ -1820,17 +1669,6 @@ class HotelPropertyCacheModel {
     "valid_days_list": validDaysList,
   };
 }
-
-enum PropertyGroupName { KONUM_BILGILERI, OTEL_ZELLIKLERI, SPA_SALK_HIZMETLERI, PLAJ_VE_HAVUZ_ZELLIKLERI, AKTIVITELER, OCUKLAR_IN }
-
-final propertyGroupNameValues = EnumValues({
-  "Aktiviteler": PropertyGroupName.AKTIVITELER,
-  "Konum Bilgileri": PropertyGroupName.KONUM_BILGILERI,
-  "Çocuklar İçin": PropertyGroupName.OCUKLAR_IN,
-  "Otel Özellikleri": PropertyGroupName.OTEL_ZELLIKLERI,
-  "Plaj ve Havuz Özellikleri": PropertyGroupName.PLAJ_VE_HAVUZ_ZELLIKLERI,
-  "Spa - Sağlık Hizmetleri": PropertyGroupName.SPA_SALK_HIZMETLERI
-});
 
 class HotelPropertyProminentCacheModel {
   HotelPropertyProminentCacheModel({
@@ -1847,24 +1685,24 @@ class HotelPropertyProminentCacheModel {
   String description;
   String cssClassName;
   int hotelPropertyProminentId;
-  String descriptionDetail;
+  dynamic descriptionDetail;
 
   factory HotelPropertyProminentCacheModel.fromJson(Map<String, dynamic> json) => HotelPropertyProminentCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
-    icon: json["icon"],
+    hotelId: json["hotel_id"],
+    icon: json["icon"] == null ? null : json["icon"],
     description: json["description"],
-    cssClassName: json["css_class_name"],
+    cssClassName: json["css_class_name"] == null ? null : json["css_class_name"],
     hotelPropertyProminentId: json["hotel_property_prominent_id"],
-    descriptionDetail: json["description_detail"] == null ? null : json["description_detail"],
+    descriptionDetail: json["description_detail"],
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
-    "icon": icon,
+    "hotel_id": hotelId,
+    "icon": icon == null ? null : icon,
     "description": description,
-    "css_class_name": cssClassName,
+    "css_class_name": cssClassName == null ? null : cssClassName,
     "hotel_property_prominent_id": hotelPropertyProminentId,
-    "description_detail": descriptionDetail == null ? null : descriptionDetail,
+    "description_detail": descriptionDetail,
   };
 }
 
@@ -1898,7 +1736,7 @@ class HotelRoomCacheModel {
   dynamic description2;
 
   factory HotelRoomCacheModel.fromJson(Map<String, dynamic> json) => HotelRoomCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     hotelRoomId: json["hotel_room_id"],
     name: json["name"],
     isDefault: json["is_default"],
@@ -1913,7 +1751,7 @@ class HotelRoomCacheModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "hotel_room_id": hotelRoomId,
     "name": name,
     "is_default": isDefault,
@@ -1972,7 +1810,7 @@ class HotelVideoCacheModel {
   String imagePathSmall;
 
   factory HotelVideoCacheModel.fromJson(Map<String, dynamic> json) => HotelVideoCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     vimeoVideoId: json["vimeo_video_id"],
     title: json["title"],
     imagePath: json["image_path"],
@@ -1982,7 +1820,7 @@ class HotelVideoCacheModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "vimeo_video_id": vimeoVideoId,
     "title": title,
     "image_path": imagePath,
@@ -2006,14 +1844,14 @@ class SeoHotelCacheModel {
   String keyword;
 
   factory SeoHotelCacheModel.fromJson(Map<String, dynamic> json) => SeoHotelCacheModel(
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     refHotelId: json["ref_hotel_id"],
     refHotelLink: json["ref_hotel_link"],
     keyword: json["keyword"],
   );
 
   Map<String, dynamic> toJson() => {
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "ref_hotel_id": refHotelId,
     "ref_hotel_link": refHotelLink,
     "keyword": keyword,
@@ -2041,7 +1879,7 @@ class Picture {
   String picPath;
   dynamic alt;
   dynamic title;
-  CategoryName categoryName;
+  CampaignType categoryName;
   String description;
   int orderNumber;
   dynamic videoUrl;
@@ -2056,7 +1894,7 @@ class Picture {
     picPath: json["pic_path"],
     alt: json["alt"],
     title: json["title"],
-    categoryName: categoryNameValues.map[json["category_name"]],
+    categoryName: campaignTypeValues.map[json["category_name"]],
     description: json["description"],
     orderNumber: json["order_number"],
     videoUrl: json["video_url"],
@@ -2072,7 +1910,7 @@ class Picture {
     "pic_path": picPath,
     "alt": alt,
     "title": title,
-    "category_name": categoryNameValues.reverse[categoryName],
+    "category_name": campaignTypeValues.reverse[categoryName],
     "description": description,
     "order_number": orderNumber,
     "video_url": videoUrl,
@@ -2105,25 +1943,25 @@ class PropertyList {
   int hotelId;
   bool isFromDate;
   bool isThereAFee;
-  int value;
+  double value;
   String propertyName;
   bool isNeededValue;
   UnitCode unitCode;
-  PropertyGroupName propertyGroupName;
+  String propertyGroupName;
   dynamic validDays;
   String description;
 
   factory PropertyList.fromJson(Map<String, dynamic> json) => PropertyList(
     hotelPropertyGroupId: json["hotel_property_group_id"],
     hotelPropertyId: json["hotel_property_id"],
-    hotelId: json["hotel_id"] == null ? null : json["hotel_id"],
+    hotelId: json["hotel_id"],
     isFromDate: json["is_from_date"],
     isThereAFee: json["is_there_a_fee"],
-    value: json["value"] == null ? null : json["value"],
+    value: json["value"] == null ? null : json["value"].toDouble(),
     propertyName: json["property_name"],
     isNeededValue: json["is_needed_value"],
     unitCode: unitCodeValues.map[json["unit_code"]],
-    propertyGroupName: propertyGroupNameValues.map[json["property_group_name"]],
+    propertyGroupName: json["property_group_name"],
     validDays: json["valid_days"],
     description: json["description"] == null ? null : json["description"],
   );
@@ -2131,27 +1969,25 @@ class PropertyList {
   Map<String, dynamic> toJson() => {
     "hotel_property_group_id": hotelPropertyGroupId,
     "hotel_property_id": hotelPropertyId,
-    "hotel_id": hotelId == null ? null : hotelId,
+    "hotel_id": hotelId,
     "is_from_date": isFromDate,
     "is_there_a_fee": isThereAFee,
     "value": value == null ? null : value,
     "property_name": propertyName,
     "is_needed_value": isNeededValue,
     "unit_code": unitCodeValues.reverse[unitCode],
-    "property_group_name": propertyGroupNameValues.reverse[propertyGroupName],
+    "property_group_name": propertyGroupName,
     "valid_days": validDays,
     "description": description == null ? null : description,
   };
 }
 
-enum UnitCode { KM, M2, EMPTY, M, AD }
+enum UnitCode { AD, EMPTY, KM }
 
 final unitCodeValues = EnumValues({
   "AD": UnitCode.AD,
   "": UnitCode.EMPTY,
-  "km": UnitCode.KM,
-  "m": UnitCode.M,
-  "M2": UnitCode.M2
+  "km": UnitCode.KM
 });
 
 class VideoList {
@@ -2214,12 +2050,12 @@ class SaleCampaign {
   dynamic campaignIconPath;
   dynamic campaignImagePath;
   String campaignLink;
-  String campaignType;
+  CampaignType campaignType;
   dynamic value;
   dynamic calcTypeId;
   String campaignLocation;
   bool isSaleCampaign;
-  String className;
+  CampaignType className;
   int stayDay;
   int paidDay;
   String image1;
@@ -2236,12 +2072,12 @@ class SaleCampaign {
     campaignIconPath: json["campaign_icon_path"],
     campaignImagePath: json["campaign_image_path"],
     campaignLink: json["campaign_link"],
-    campaignType: json["campaign_type"],
+    campaignType: campaignTypeValues.map[json["campaign_type"]],
     value: json["value"],
     calcTypeId: json["calc_type_id"],
     campaignLocation: json["campaign_location"],
     isSaleCampaign: json["is_sale_campaign"],
-    className: json["class_name"],
+    className: campaignTypeValues.map[json["class_name"]],
     stayDay: json["stay_day"],
     paidDay: json["paid_day"],
     image1: json["image1"],
@@ -2259,12 +2095,12 @@ class SaleCampaign {
     "campaign_icon_path": campaignIconPath,
     "campaign_image_path": campaignImagePath,
     "campaign_link": campaignLink,
-    "campaign_type": campaignType,
+    "campaign_type": campaignTypeValues.reverse[campaignType],
     "value": value,
     "calc_type_id": calcTypeId,
     "campaign_location": campaignLocation,
     "is_sale_campaign": isSaleCampaign,
-    "class_name": className,
+    "class_name": campaignTypeValues.reverse[className],
     "stay_day": stayDay,
     "paid_day": paidDay,
     "image1": image1,

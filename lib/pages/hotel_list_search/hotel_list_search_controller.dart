@@ -18,7 +18,7 @@ class HotelListSearchController extends GetxController{
           update();
         },
         onError: (error) {
-          print('There is something wrong with the _monday controller get method ${error}');
+          print('There is something wrong HOTEL LIST controller ${error}');
           isLoading = false;
           update();
         });

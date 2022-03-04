@@ -1,15 +1,6 @@
-import 'package:fetch_api_using_dio/pages/account/account_page.dart';
-import 'package:fetch_api_using_dio/pages/alerts/alerts_page.dart';
-import 'package:fetch_api_using_dio/pages/all_data/all_data_page.dart';
-import 'package:fetch_api_using_dio/pages/home/home_page.dart';
 import 'package:fetch_api_using_dio/pages/hotel_list_search/hotel_list_search_page.dart';
 import 'package:fetch_api_using_dio/pages/hotel_list_search_detail/hotel_list_search_detail_page.dart';
-import 'package:fetch_api_using_dio/pages/hotels/components/hotel_detail.dart';
-import 'package:fetch_api_using_dio/pages/hotels/hotels_page.dart';
-import 'package:fetch_api_using_dio/pages/news/news_page.dart';
-import 'package:fetch_api_using_dio/pages/posts/components/post_detail.dart';
 import 'package:fetch_api_using_dio/pages/posts/posts_page.dart';
-import 'package:fetch_api_using_dio/pages/userpage/userpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,16 +16,9 @@ class DashboardPage extends StatelessWidget {
           child: IndexedStack(
             index: controller.tabIndex,
             children: [
-              // HomePage(),
-              // NewsPage(),
               PostsPage(),
               HotelListSearchPage(),
-              // AccountPage(),
               HotelListSearchDetailPage(),
-              // HotelsPage(),
-              // UserPage(),
-              // PostDetailPage(),
-              // HotelDetailPage()
             ],
           ),
         ),
@@ -47,12 +31,9 @@ class DashboardPage extends StatelessWidget {
           currentIndex: controller.tabIndex,
           onTap: controller.changeTabIndex,
           items: [
-            // _bottomNavigationBarItem(icon: CupertinoIcons.home, label: 'Home'),
-            // _bottomNavigationBarItem(icon: CupertinoIcons.news, label: 'News'),
             _bottomNavigationBarItem(icon: CupertinoIcons.news, label: 'Posts'),
             _bottomNavigationBarItem(icon: CupertinoIcons.bell, label: 'Alerts'),
             _bottomNavigationBarItem(icon: CupertinoIcons.person,  label: 'Account'),
-            // _bottomNavigationBarItem(icon: CupertinoIcons.building_2_fill,  label: 'Hotels'),
           ],
         ),);
     });

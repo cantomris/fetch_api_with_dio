@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fetch_api_using_dio/models/user.dart';
 
 class LoginPage extends StatelessWidget {
   @override
