@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class HotelListSearchDetailBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut(() => HotelListSearchDetailController());
+    Get.putAsync<HotelListSearchDetailController>(() async => await HotelListSearchDetailController());
   }
 
 }

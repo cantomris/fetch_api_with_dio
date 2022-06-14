@@ -35,9 +35,6 @@ class AppPages {
       page: () => PostDetailPage(),
     ),
     GetPage(
-        name: '${AppRoutes.HOTELLISTSEARCHHOTELDETAIL}/:id',
-        page: () => HotelListSearchDetail()),
-    GetPage(
         name: '${AppRoutes.SEARCHDETAIL}/:id',
         page: () => HotelDetailPage(),
         binding: HotelListSearchDetailBinding())

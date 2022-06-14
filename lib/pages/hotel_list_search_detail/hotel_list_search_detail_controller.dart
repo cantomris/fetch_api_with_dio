@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 class HotelListSearchDetailController extends GetxController{
   Results hotelDetail;
   bool isLoading = true;
+  int hotelID;
   @override
   void onInit() {
-    HotelListSearchDetailProvider(5).getHotelDetail(
+    HotelListSearchDetailProvider(hotelDetail.rtData.hotelId).getHotelDetail(
         onSuccess: (hotel) {
           hotelDetail = hotel;
           isLoading = false;
@@ -17,7 +18,7 @@ class HotelListSearchDetailController extends GetxController{
         },
         onError: (error) {
           print('There is something wrong HOTEL DETAIL controller => $error');
-          isLoading = false;
+          // isLoading = false;
           update();
         });
     super.onInit();

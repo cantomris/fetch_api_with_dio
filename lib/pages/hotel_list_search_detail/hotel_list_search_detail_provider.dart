@@ -3,12 +3,8 @@ import 'package:fetch_api_using_dio/services/hotel_list_search_detail_service.da
 import 'package:flutter/material.dart';
 
 class HotelListSearchDetailProvider {
-
-  final int hotelId;
-
-
-
-  HotelListSearchDetailProvider(this.hotelId);
+final int hotelID;
+  HotelListSearchDetailProvider(this.hotelID);
 
   void getHotelDetail({
     Function() beforeSend,
@@ -21,7 +17,7 @@ class HotelListSearchDetailProvider {
       "language_type": "1",
       "channel_id": "1",
       "marketing_id": "1",
-      "hotel_id": '${hotelId}',
+      "hotel_id": '$hotelID',
       "checkIn": "2018-07-10",
       "checkOut": "2018-07-16",
       "hotelLocationAirports": [

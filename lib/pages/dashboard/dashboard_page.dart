@@ -18,7 +18,6 @@ class DashboardPage extends StatelessWidget {
             children: [
               PostsPage(),
               HotelListSearchPage(),
-              HotelListSearchDetailPage(),
             ],
           ),
         ),
@@ -33,7 +32,6 @@ class DashboardPage extends StatelessWidget {
           items: [
             _bottomNavigationBarItem(icon: CupertinoIcons.news, label: 'Posts'),
             _bottomNavigationBarItem(icon: CupertinoIcons.bell, label: 'Alerts'),
-            _bottomNavigationBarItem(icon: CupertinoIcons.person,  label: 'Account'),
           ],
         ),);
     });

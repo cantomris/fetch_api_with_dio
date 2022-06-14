@@ -11,6 +11,6 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(() => DashboardController());
     Get.lazyPut<HotelListSearchController>(() => HotelListSearchController());
     Get.lazyPut<PostsController>(() => PostsController());
-    Get.lazyPut<HotelListSearchDetailController>(() => HotelListSearchDetailController());
+    // Get.putAsync<HotelListSearchDetailController>(() async => await HotelListSearchDetailController());
   }
 }
